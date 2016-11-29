@@ -40,6 +40,14 @@ angular.module('angular-lightbox', [])
 
           scope.loadImageAt(index);
 
+          // Close lightbox if click anywhere
+          if (attrs.closeAnywhere) {
+            dom.on('click', function() {
+              dom.remove();
+              return false;
+            });
+          }
+
           // Previous image button
           dom.on('click', 'a.previous', function() {
             scope.showPrevious();
